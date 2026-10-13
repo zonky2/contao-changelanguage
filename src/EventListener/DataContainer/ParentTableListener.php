@@ -50,7 +50,7 @@ class ParentTableListener
      */
     public function onMasterOptions(DataContainer $dc): array
     {
-        if (null === ($jumpTo = PageModel::findById($dc->activeRecord->jumpTo))) {
+        if (!$dc->activeRecord || null === ($jumpTo = PageModel::findById($dc->activeRecord->jumpTo))) {
             return [];
         }
 
